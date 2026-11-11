@@ -5,90 +5,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>3D House Model</title>
+    <title>WebAR 3D House</title>
 
-    <script type="module"
-        src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js">
-    </script>
+    <!-- A-Frame -->
+    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
 
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #eef2f5;
-            text-align: center;
-        }
-
-        header {
-            background: #263849;
-            color: white;
-            padding: 20px;
-        }
-
-        h1 {
-            margin: 0;
-        }
-
-        .container {
-            padding: 20px;
-        }
-
-        model-viewer {
-            width: 90%;
-            height: 500px;
-            margin: 20px auto;
-            background-color: white;
-            border-radius: 15px;
-        }
-
-        p {
-            color: #333;
-        }
-
-        footer {
-            padding: 15px;
-            background: #263849;
-            color: white;
-        }
-    </style>
+    <!-- AR.js -->
+    <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js@3.4.7/aframe/build/aframe-ar.js"></script>
 </head>
 
-<body>
+<body style="margin: 0; overflow: hidden;">
 
-    <header>
-        <h1>3D House Model</h1>
-        <p>Interactive 3D Model Viewer</p>
-    </header>
+    <a-scene
+        embedded
+        vr-mode-ui="enabled: false"
+        renderer="logarithmicDepthBuffer: true;"
+        arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;">
 
-    <div class="container">
+        <!-- Load 3D House Model -->
+        <a-assets>
+            <a-asset-item
+                id="houseModel"
+                src="simple_3d_house.glb">
+            </a-asset-item>
+        </a-assets>
 
-        <h2>My 3D Model</h2>
+        <!-- Hiro Marker -->
+        <a-marker preset="hiro">
 
-        <p>
-            This website displays a 3D house model created
-            using Blender and exported in GLB format.
-        </p>
+            <!-- Display 3D House -->
+            <a-entity
+                gltf-model="#houseModel"
+                position="0 0 0"
+                rotation="-90 0 0"
+                scale="0.5 0.5 0.5">
+            </a-entity>
 
-        <model-viewer
-            src="simple_3d_house.glb"
-            alt="3D House Model"
-            camera-controls
-            auto-rotate
-            shadow-intensity="1"
-            exposure="1"
-            ar
-            ar-modes="webxr scene-viewer quick-look">
-        </model-viewer>
+        </a-marker>
 
-        <p>
-            Drag to rotate the model and scroll to zoom in or out.
-        </p>
+        <!-- Camera -->
+        <a-entity camera></a-entity>
 
-    </div>
+    </a-scene>
 
-    <footer>
-        <p>3D House Model Project</p>
-    </footer>
+</body>
+</html>
 
 </body>
 </html>
