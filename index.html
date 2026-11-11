@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>3D House Model</title>
+
+    <script type="module"
+        src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js">
+    </script>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #eef2f5;
+            text-align: center;
+        }
+
+        header {
+            background: #263849;
+            color: white;
+            padding: 20px;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        model-viewer {
+            width: 90%;
+            height: 500px;
+            margin: 20px auto;
+            background-color: white;
+            border-radius: 15px;
+        }
+
+        p {
+            color: #333;
+        }
+
+        footer {
+            padding: 15px;
+            background: #263849;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>3D House Model</h1>
+        <p>Interactive 3D Model Viewer</p>
+    </header>
+
+    <div class="container">
+
+        <h2>My 3D Model</h2>
+
+        <p>
+            This website displays a 3D house model created
+            using Blender and exported in GLB format.
+        </p>
+
+        <model-viewer
+            src="simple_3d_house.glb"
+            alt="3D House Model"
+            camera-controls
+            auto-rotate
+            shadow-intensity="1"
+            exposure="1"
+            ar
+            ar-modes="webxr scene-viewer quick-look">
+        </model-viewer>
+
+        <p>
+            Drag to rotate the model and scroll to zoom in or out.
+        </p>
+
+    </div>
+
+    <footer>
+        <p>3D House Model Project</p>
+    </footer>
+
+</body>
+</html>
